@@ -75,7 +75,7 @@ class CircleState(AbstractState):
     def execute(self):
         try:
             radius = float(input('Enter radius: '))
-            print(f'{math.pi * r**2}')
+            print(f'{math.pi * radius**2}')
         except:
             print('Error')
 
