@@ -1,5 +1,6 @@
-from state_machine import AbstractState, StateMachine
 import math
+
+from state_machine import AbstractState, StateMachine, QuitState
 
 
 class MenuState(AbstractState):
@@ -21,11 +22,6 @@ class MenuState(AbstractState):
         else:
             print('Invalid input')
             self.next_state = MenuState()
-
-
-class QuitState(AbstractState):
-    def execute(self):
-        print('Quitting')
 
 
 class SquareState(AbstractState):
@@ -84,7 +80,7 @@ class CircleState(AbstractState):
 
 if __name__ == '__main__':
     state_machine = StateMachine(MenuState())
-    while state_machine.has_state():
+    while not state_machine.is_finished():
         print('-' * 20)
         state_machine.execute()
         state_machine.transition()
